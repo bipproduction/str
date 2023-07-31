@@ -8,5 +8,7 @@ export async function GET() {
             id: true
         }
     })
+
+    console.log(listData)
     return NextResponse.json(_.map(listData, (v) => v.id))
 }
