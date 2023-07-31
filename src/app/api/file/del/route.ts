@@ -1,6 +1,8 @@
 import { prisma } from "@/utils/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+export const revalidate = 0
+
 export async function DELETE(req: NextRequest) {
     const id = req.nextUrl.searchParams.get("id")
     const data = await prisma.file.findUnique({

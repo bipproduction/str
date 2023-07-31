@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
-import fs from 'fs'
 import fileTypes from "@/utils/file_type";
-import { headers } from 'next/headers'
 import { prisma } from "@/utils/prisma";
+import fs from 'fs';
+import { NextRequest, NextResponse } from "next/server";
+
+export const revalidate = 0
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
 
@@ -10,9 +11,6 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     const ext = fileId.substring(fileId.lastIndexOf('.') + 1);
     const dir = "./public/assets/files"
     const nama = fileId.slice(0, fileId.lastIndexOf('.'));
-
-
-    console.log(nama)
 
     const fileDb = await prisma.file.findUnique({
         where: {
