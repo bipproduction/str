@@ -7,10 +7,11 @@ export const revalidate = 0
 export async function GET() {
     const listData = await prisma.file.findMany({
         select: {
-            id: true
+            id: true,
+            ext: true
         }
     })
 
     console.log(listData)
-    return NextResponse.json(_.map(listData, (v) => v.id))
+    return NextResponse.json(listData.map((v) => `${v.id}.${v.ext}`))
 }
