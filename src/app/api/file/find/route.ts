@@ -9,11 +9,15 @@ export async function GET(req: NextRequest) {
     const data = await prisma.file.findMany({
         where: {
             name: {
-                contains: name!
-            }
+                contains: name!,
+
+            },
+            isActive: true
         },
         select: {
-            id: true
+            id: true,
+            name: true,
+            ext: true
         }
     })
 

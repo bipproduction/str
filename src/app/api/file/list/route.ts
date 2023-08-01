@@ -6,6 +6,9 @@ export const revalidate = 0
 
 export async function GET() {
     const listData = await prisma.file.findMany({
+        where: {
+            isActive: true
+        },
         select: {
             id: true,
             ext: true
