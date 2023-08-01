@@ -16,5 +16,5 @@ export async function GET() {
     })
 
     console.log(listData)
-    return NextResponse.json(listData.map((v) => `${v.id}.${v.ext}`))
+    return NextResponse.json(listData)
 }
