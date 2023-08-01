@@ -21,5 +21,5 @@ export async function GET(req: NextRequest) {
         }
     })
 
-    return NextResponse.json(_.map(data, (v) => v.id))
+    return NextResponse.json(data)
 }
