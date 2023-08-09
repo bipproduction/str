@@ -3,6 +3,7 @@ import fs from 'fs'
 import _ from 'lodash'
 import { prisma } from "@/utils/prisma";
 import fileTypes from "@/utils/file_type";
+
 export async function POST(req: any) {
 
     // res.setHeader('Access-Control-Allow-Origin', 'https://your-domain.com'); // Ganti dengan domain Anda
