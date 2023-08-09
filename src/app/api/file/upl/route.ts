@@ -3,7 +3,14 @@ import fs from 'fs'
 import _ from 'lodash'
 import { prisma } from "@/utils/prisma";
 import fileTypes from "@/utils/file_type";
-export async function POST(req: any) {
+export async function POST(req: any, res: NextResponse) {
+
+    // res.setHeader('Access-Control-Allow-Origin', 'https://your-domain.com'); // Ganti dengan domain Anda
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); // Sesuaikan dengan metode yang diizinkan
+
+
+    res.headers.set('Access-Control-Allow-Origin', "*")
+    res.headers.set('Access-Control-Allow-Methods', "POST")
 
     const alamat = './public/assets/files'
     const form = await req.formData()
