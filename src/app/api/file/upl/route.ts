@@ -36,7 +36,7 @@ export async function POST(req: any) {
         select: {
             id: true,
             name: true,
-            path: true,
+            ext: true
         }
     })
 
