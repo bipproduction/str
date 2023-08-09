@@ -31,6 +31,11 @@ export async function POST(req: any) {
             name: file.name,
             ext: ext,
             path: alamat
+        },
+        select: {
+            id: true,
+            name: true,
+            path: true,
         }
     })
 
