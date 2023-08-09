@@ -49,6 +49,7 @@ export async function POST(req: any) {
 
     fs.writeFileSync(`${alamat}/${ext}/${dbFile.id}.${ext}`, fileBuffer)
 
+    console.log("upload file", JSON.stringify(dbFile))
     return NextResponse.json({
         success: true,
         message: "success",
