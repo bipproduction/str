@@ -56,6 +56,11 @@ export async function POST(req: any) {
         message: "success",
         data: dbFile
     }, {
-        status: 201
+        status: 201,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        }
     })
 }
