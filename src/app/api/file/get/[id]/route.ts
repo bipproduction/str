@@ -2,6 +2,7 @@ import fileTypes from "@/utils/file_type";
 import { prisma } from "@/utils/prisma";
 import fs from 'fs';
 import { NextRequest, NextResponse } from "next/server";
+import sharp from 'sharp'
 
 export const revalidate = 0
 
@@ -11,6 +12,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     const ext = fileId.substring(fileId.lastIndexOf('.') + 1);
     const dir = "./public/assets/files"
     const nama = fileId.slice(0, fileId.lastIndexOf('.'));
+
+    const width = req.nextUrl.searchParams.get('w')
 
     const fileDb = await prisma.file.findUnique({
         where: {
@@ -41,6 +44,17 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
             }
         })
     }
+
+    if (width) {
+        const img = await sharp(`${dir}/${ext}/${fileId}`).resize(+width).toBuffer()
+        const mime = fileTypes[ext].mimeType
+        return new NextResponse(img, {
+            headers: {
+                "Content-Type": mime
+            }
+        })
+    }
+
 
     const file = fs.readFileSync(`${dir}/${ext}/${fileId}`)
     const mime = fileTypes[ext].mimeType
