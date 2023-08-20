@@ -1,17 +1,21 @@
-import { NextRequest, NextResponse } from "next/server";
-import fs from 'fs'
-import _ from 'lodash'
-import { prisma } from "@/utils/prisma";
 import fileTypes from "@/utils/file_type";
+import { prisma } from "@/utils/prisma";
+import fs from 'fs';
+import _ from 'lodash';
+import { NextResponse } from "next/server";
+import { funUserCookie } from "../../../../../app_modules";
+import { redirect } from "next/navigation";
+
+const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
 
 export async function POST(req: any) {
 
-    // res.setHeader('Access-Control-Allow-Origin', 'https://your-domain.com'); // Ganti dengan domain Anda
-    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); // Sesuaikan dengan metode yang diizinkan
-
-
-    // res.headers.set('Access-Control-Allow-Origin', "*")
-    // res.headers.set('Access-Control-Allow-Methods', "POST")
+    const userToken = await funUserCookie()
+    if (!userToken) return redirect('/login')
 
     const alamat = './public/assets/files'
     const form = await req.formData()
@@ -24,14 +28,15 @@ export async function POST(req: any) {
     if (!_.keys(fileTypes).includes(ext)) return NextResponse.json({
         success: false,
         message: `file tidak didukung ${ext}`
-    })
+    }, { status: 415, headers })
 
 
     const dbFile = await prisma.file.create({
         data: {
             name: file.name,
             ext: ext,
-            path: alamat
+            path: alamat,
+            userId: userToken?.id
         },
         select: {
             id: true,
@@ -57,10 +62,6 @@ export async function POST(req: any) {
         data: dbFile
     }, {
         status: 201,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        }
+        headers
     })
 }

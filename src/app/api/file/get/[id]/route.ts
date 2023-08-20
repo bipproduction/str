@@ -2,7 +2,7 @@ import fileTypes from "@/utils/file_type";
 import { prisma } from "@/utils/prisma";
 import fs from 'fs';
 import { NextRequest, NextResponse } from "next/server";
-import sharp from 'sharp'
+import sharp from 'sharp';
 
 export const revalidate = 0
 

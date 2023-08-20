@@ -1,9 +1,11 @@
+import { cookies } from 'next/headers'
+import { funCheckCookie } from '../../app_modules/bin/check_cookie';
 
-export default function Home() {
-  return (
-    <center>
-      <h1>STR</h1>
-      <p>Storage</p>
-    </center>
-  )
+export const dynamic = 'force-dynamic'
+
+export default async function Page() {
+  const c = await funCheckCookie()
+  return (<>
+    {JSON.stringify(c)}
+  </>);
 }
