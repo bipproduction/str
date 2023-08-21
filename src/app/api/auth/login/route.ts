@@ -1,12 +1,14 @@
 import { prisma } from "@/utils/prisma"
+import 'colors'
 import { sealData } from "iron-session"
 import _ from "lodash"
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from "next/server"
-import 'colors'
 
-export async function POST(req: NextRequest) {
-    const { name, password } = await req.json()
+
+export async function GET(req: NextRequest) {
+    const name = new URL(req.url).searchParams.get('name')
+    const password = new URL(req.url).searchParams.get('password')
     if (!name || !password) return NextResponse.json({
         success: false,
         message: "wrong user name or password"
