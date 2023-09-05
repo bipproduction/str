@@ -11,22 +11,24 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  phone     String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  File      File[]
-  Auth      Auth?
+  id         String       @id @default(cuid())
+  name       String
+  email      String       @unique
+  password   String
+  phone      String?      @unique
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  File       File[]
+  Auth       Auth?
+  active     Boolean      @default(true)
+  UserApiKey UserApiKey[]
 }
 
 model File {
   id        String   @id @default(cuid())
   name      String
   ext       String
-  path      String
+  path      String?
   isActive  Boolean  @default(true)
   User      User?    @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
@@ -41,5 +43,18 @@ model Auth {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    String   @id @default(cuid())
+  isActive  Boolean  @default(true)
+  token     String?  @db.Text
+}
+
+model UserApiKey {
+  id        String   @id @default(cuid())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  name      String?
+  des       String?
+  apikey    String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   isActive  Boolean  @default(true)
 }

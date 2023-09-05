@@ -1,11 +1,12 @@
-import { redirect } from 'next/navigation';
 import RootStyleRegistry from './emotion';
-import { cookies } from 'next/headers'
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const token = cookies().get('str_token') ?? null
-
-  return (
-    <RootStyleRegistry>{children}</RootStyleRegistry>
-  );
+export default function RootLayout({ children }: { children: any }) {
+  return <html lang='en-US'>
+    <head />
+    <body suppressHydrationWarning={true}>
+      <RootStyleRegistry>
+        {children}
+      </RootStyleRegistry>
+    </body>
+  </html>;
 }

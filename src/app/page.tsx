@@ -1,11 +1,17 @@
-import { cookies } from 'next/headers'
-import { funCheckCookie } from '../../app_modules/bin/check_cookie';
+import ViewMainPage from '@/app_modules/main_page/view/main';
+import { funGetUser } from '@/utils/get_user';
+import { redirect } from 'next/navigation';
+import fs from 'fs'
 
-export const dynamic = 'force-dynamic'
+const info = fs.readFileSync('./public/info.md').toString()
 
 export default async function Page() {
-  const c = await funCheckCookie()
-  return (<>
-    {JSON.stringify(c)}
-  </>);
+  const user = await funGetUser()
+  if (!user) return redirect('/auth/login')
+
+
+  return <ViewMainPage info={info} data={{
+    token: user.token,
+    userId: user.id
+  }} />;
 }
