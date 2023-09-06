@@ -1,8 +1,9 @@
 'use client'
 
-import { ActionIcon, Button, Center, CopyButton, Group, Stack, Text, Title } from "@mantine/core"
+import { ActionIcon, Button, Center, CopyButton, Group, Space, Stack, Text, Title } from "@mantine/core"
 import { useRouter } from "next/navigation"
 import { MdArrowBackIos } from "react-icons/md"
+import LogoutButton from "../widget/logout"
 
 export default function ViewProfile({ data }: { data: any }) {
     const router = useRouter()
@@ -12,9 +13,13 @@ export default function ViewProfile({ data }: { data: any }) {
                 <Stack maw={720} pos={"relative"} style={{
                     wordWrap: "break-word"
                 }}>
-                    <ActionIcon onClick={() => router.back()}>
-                        <MdArrowBackIos size={36} />
-                    </ActionIcon>
+                    <Group position="apart">
+                        <ActionIcon onClick={() => router.back()}>
+                            <MdArrowBackIos size={36} />
+                        </ActionIcon>
+                        <LogoutButton />
+                    </Group>
+                    <Space h={70} />
                     <Title>Api Key</Title>
                     <Group position="right">
                         <CopyButton value={data.token}>

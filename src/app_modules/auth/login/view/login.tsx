@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import toast from "react-simple-toasts"
 import { funLogin } from "../.."
-import { Button, Center, Stack, TextInput, Title, UnstyledButton } from "@mantine/core"
+import { Button, Center, PasswordInput, Stack, TextInput, Title, UnstyledButton } from "@mantine/core"
 import { useShallowEffect } from "@mantine/hooks"
 
 // export const dynamic = "force-dynamic"
@@ -32,7 +32,8 @@ export default function ViewLogin() {
                         ...dataLogin,
                         email: val.target.value
                     })} />
-                    <TextInput placeholder="password" onChange={(val) => setDataLogin({
+                    
+                    <PasswordInput placeholder="password" onChange={(val) => setDataLogin({
                         ...dataLogin,
                         password: val.target.value
                     })} />
