@@ -7,6 +7,6 @@ export default async function Page() {
     if (!user) return <><a href="/">Login please!</a></>
     const userName = await prisma.user.findUnique({where: {id: user.id as any}})
     return <>
-        <ViewProfile data={user} userName={userName} />
+        <ViewProfile data={user} userName={userName?.name} />
     </>
 }
