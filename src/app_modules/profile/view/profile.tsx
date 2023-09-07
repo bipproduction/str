@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { MdArrowBackIos } from "react-icons/md"
 import LogoutButton from "../widget/logout"
 
-export default function ViewProfile({ data }: { data: any }) {
+export default function ViewProfile({ data, userName }: { data: any, userName: any }) {
     const router = useRouter()
     return <>
         <Stack>
@@ -22,6 +22,7 @@ export default function ViewProfile({ data }: { data: any }) {
                     <Space h={70} />
                     <Title>Api Key</Title>
                     <Group position="right">
+                        <Text>{userName}</Text>
                         <CopyButton value={data.token}>
                             {({ copied, copy }) => (
                                 <Button color={copied ? 'teal' : 'blue'} onClick={copy}>
