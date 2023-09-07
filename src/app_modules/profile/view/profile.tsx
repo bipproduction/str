@@ -17,12 +17,14 @@ export default function ViewProfile({ data, userName }: { data: any, userName: a
                         <ActionIcon onClick={() => router.back()}>
                             <MdArrowBackIos size={36} />
                         </ActionIcon>
-                        <LogoutButton />
+                        <Group>
+                            <Text>{userName}</Text>
+                            <LogoutButton />
+                        </Group>
                     </Group>
                     <Space h={70} />
                     <Title>Api Key</Title>
                     <Group position="right">
-                        <Text>{userName}</Text>
                         <CopyButton value={data.token}>
                             {({ copied, copy }) => (
                                 <Button color={copied ? 'teal' : 'blue'} onClick={copy}>
