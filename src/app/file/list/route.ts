@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
     const userId = await funGetAuthorization(req)
-    if (!userId) return redirect('/login')
+    if (!userId) return redirect('/auth/login')
 
     let skip = new URL(req.url).searchParams.get('skip')
     let take = new URL(req.url).searchParams.get('take')

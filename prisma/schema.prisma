@@ -22,6 +22,16 @@ model User {
   Auth       Auth?
   active     Boolean      @default(true)
   UserApiKey UserApiKey[]
+  Data       Data[]       @relation("UserToProfile")
+  Orang      Data[]       @relation("OrangToProfile")
+}
+
+model Data {
+  id      String  @id @default(uuid())
+  User    User?   @relation("UserToProfile", fields: [userId], references: [id], map: "UserData")
+  userId  String?
+  Orang   User?   @relation("OrangToProfile", fields: [userId], references: [id], map: "OrangData")
+  orangId String?
 }
 
 model File {
