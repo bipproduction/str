@@ -34,7 +34,8 @@ export async function GET(req: NextRequest, { params }: { params: { name: string
     })
 
     try {
-        const file = fs.readFileSync(`${process.env.FILE_PATH}/${id}.${ext}`)
+        // console.log(fs.readdirSync('./public/assets'))
+        const file = fs.readFileSync(`./public/assets/${id}.${ext}`)
         if (w && (ext === "png" || ext === "jpg")) {
             const fw = await sharp(file).resize(+w).toBuffer()
             return new NextResponse(fw, {
@@ -49,7 +50,9 @@ export async function GET(req: NextRequest, { params }: { params: { name: string
                 "Content-Type": mimType
             }
         })
+
     } catch (error) {
+        console.log(error)
         return new NextResponse(def, {
             headers: {
                 "Content-type": "image/png"

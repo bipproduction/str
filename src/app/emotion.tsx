@@ -1,10 +1,12 @@
 'use client';
 import 'regenerator-runtime'
 import { CacheProvider } from '@emotion/react';
-import { useEmotionCache, MantineProvider } from '@mantine/core';
+import { useEmotionCache, MantineProvider, Notification } from '@mantine/core';
 import { useServerInsertedHTML } from 'next/navigation';
 import { toastConfig } from 'react-simple-toasts';
 import 'react-simple-toasts/dist/theme/dark.css'
+import { Notifications } from '@mantine/notifications';
+// import '@mantine/notifications/styles.css';
 toastConfig({
   theme: "dark"
 })
