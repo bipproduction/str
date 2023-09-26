@@ -16,7 +16,9 @@ export default async function Page() {
             isActive: true
         }
     })
-    
+
+    // tambahan
+
 
     return <>
         <ViewList user={user} data={data as any} />
