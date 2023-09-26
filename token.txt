@@ -7,3 +7,5 @@ apa kabar
 apa
 
 ini kabarnya
+
+sapi
