@@ -17,9 +17,6 @@ export default async function Page() {
         }
     })
 
-    // tambahan
-
-
     return <>
         <ViewList user={user} data={data as any} />
     </>

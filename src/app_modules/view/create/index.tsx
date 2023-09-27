@@ -22,7 +22,7 @@ export default function ViewCreate({ user }: { user: File }) {
                 }}
                 onReject={(files) => Notify.warning("kegedean atau file gak support")}
                 maxSize={3 * 1024 ** 2}
-                accept={IMAGE_MIME_TYPE}
+                // accept={IMAGE_MIME_TYPE}
             >
                 <Group position="center" mih={220} style={{ pointerEvents: 'none' }}>
                     <Dropzone.Accept>
