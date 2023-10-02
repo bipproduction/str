@@ -129,6 +129,8 @@
 satu
 dua
 apa
+kabar
+apa
 
 
 
