@@ -132,6 +132,7 @@ apa
 kabar
 apa
 ini
+satu
 
 
 
