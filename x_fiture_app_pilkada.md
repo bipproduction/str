@@ -128,6 +128,7 @@
 
 satu
 kuda
+kucing
 
 
 
