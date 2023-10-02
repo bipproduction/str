@@ -131,6 +131,7 @@ dua
 apa
 kabar
 apa
+ini
 
 
 
