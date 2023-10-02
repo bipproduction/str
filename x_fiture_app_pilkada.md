@@ -126,10 +126,5 @@
     - **Sumber Data**: Laporan dari pengguna yang melaporkan berita palsu.
 
 
+
 satu
-kuda
-kucing
-
-kerbau
-
-
