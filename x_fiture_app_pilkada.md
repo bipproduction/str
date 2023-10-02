@@ -127,13 +127,7 @@
 
 
 satu
-dua
-apa
-kabar
-apa
-ini
-satu
-dua
+kuda
 
 
 
