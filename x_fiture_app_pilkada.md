@@ -133,6 +133,7 @@ kabar
 apa
 ini
 satu
+dua
 
 
 
