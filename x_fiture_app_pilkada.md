@@ -130,6 +130,6 @@ satu
 kuda
 kucing
 
-
+kerbau
 
 
